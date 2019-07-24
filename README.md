@@ -21,6 +21,8 @@
 
 # Changes for Windows Build
 
+Signing of Mynewt Artifacts is NOT supported supported because RSA has been disabled...
+
 In `go\src\github.com\apache\mynewt-artifact\image\create.go`:
 ```
 func sigTlvType(key sec.PrivSignKey) uint8 {

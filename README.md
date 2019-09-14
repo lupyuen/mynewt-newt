@@ -21,44 +21,6 @@
 
 # Changes for Windows Build
 
-Signing of Mynewt Artifacts is NOT supported supported because RSA has been disabled...
-
-In `go\src\github.com\apache\mynewt-artifact\image\create.go` line 70:
-```
-func sigTlvType(key sec.PrivSignKey) uint8 {
-	key.AssertValid()
-
-	if key.Rsa != nil {
-		//// Undefined pubk.Size()
-		panic("go\\src\\github.com\\apache\\mynewt-artifact\\image\\create.go: Undefined pubk.Size()") ////
-		return 0                                                                                  ////
-		/*
-			pubk := key.Rsa.Public().(*rsa.PublicKey)
-			switch pubk.Size() {
-			case 256:
-				return IMAGE_TLV_RSA2048
-			case 384:
-				return IMAGE_TLV_RSA3072
-			default:
-				return 0
-			}
-		*/
-```
-
-In `go\src\github.com\apache\mynewt-artifact\sec\sign.go` line 221:
-```
-func (key *PrivSignKey) SigLen() uint16 {
-	key.AssertValid()
-
-	if key.Rsa != nil {
-		//// Undefined pubk.Size()
-		panic("go\\src\\github.com\\apache\\mynewt-artifact\\sec\\sign.go: Undefined pubk.Size()") ////
-		return 0                                                                              ////
-		//// pubk := key.Rsa.Public().(*rsa.PublicKey)
-		//// return uint16(pubk.Size())
-
-```
-
 Build with `scripts\build.cmd`
 
 # Newt

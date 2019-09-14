@@ -4,10 +4,12 @@ go 1.12
 
 require (
 	github.com/NickBall/go-aes-key-wrap v0.0.0-20170929221519-1c3aa3e4dfc5
-	github.com/apache/mynewt-artifact v0.0.3
+	github.com/apache/mynewt-artifact v0.0.4
+	github.com/konsorten/go-windows-terminal-sequences v1.0.2 // indirect
 	github.com/sirupsen/logrus v1.4.2
 	github.com/spf13/cast v1.3.0
 	github.com/spf13/cobra v0.0.5
 	github.com/spf13/pflag v1.0.3
-	golang.org/x/crypto v0.0.0-20190621222207-cc06ce4a13d4
+	golang.org/x/crypto v0.0.0-20190911031432-227b76d455e7
+	golang.org/x/sys v0.0.0-20190913121621-c3b328c6e5a7 // indirect
 )

@@ -23,7 +23,7 @@
 
 Signing of Mynewt Artifacts is NOT supported supported because RSA has been disabled...
 
-In `go\src\github.com\apache\mynewt-artifact\image\create.go`:
+In `go\src\github.com\apache\mynewt-artifact\image\create.go` line 70:
 ```
 func sigTlvType(key sec.PrivSignKey) uint8 {
 	key.AssertValid()
@@ -45,7 +45,7 @@ func sigTlvType(key sec.PrivSignKey) uint8 {
 		*/
 ```
 
-In `go\src\github.com\apache\mynewt-artifact\sec\sign.go`:
+In `go\src\github.com\apache\mynewt-artifact\sec\sign.go` line 221:
 ```
 func (key *PrivSignKey) SigLen() uint16 {
 	key.AssertValid()

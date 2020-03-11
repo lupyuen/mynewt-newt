@@ -29,14 +29,16 @@ import (
 )
 
 func main() {
-	fmt.Printf("Size Report\n")
+	fmt.Printf("Generating Size Report...\n")
 	var err = SizeReport(
 		"/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pinetime/PineTime.elf",
 		"/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pinetime/PineTime.map",
-		"/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pinetime",
+		"/Users/Luppy/PineTime/PineTime-apps/apps/pinetime",
 		"RAM",
 		true)
-	fmt.Fprintln(os.Stderr, "Error: ", err)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "Error: ", err)
+	}
 }
 
 func runNmCommand(elfFilePath string) ([]byte, error) {

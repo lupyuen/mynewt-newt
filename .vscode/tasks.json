@@ -6,7 +6,7 @@
         {
             "label": "Build",
             "type": "shell",
-            "command": "scripts\\build.cmd",
+            "command": "scripts/build.sh",
             "group": {
                 "kind": "build",
                 "isDefault": true

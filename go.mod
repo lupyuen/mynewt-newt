@@ -9,7 +9,7 @@ require (
 	github.com/sirupsen/logrus v1.4.2
 	github.com/spf13/cast v1.3.0
 	github.com/spf13/cobra v0.0.5
-	github.com/spf13/pflag v1.0.3
+	github.com/spf13/pflag v1.0.5
 	golang.org/x/crypto v0.0.0-20190911031432-227b76d455e7
 	golang.org/x/sys v0.0.0-20190913121621-c3b328c6e5a7 // indirect
 )

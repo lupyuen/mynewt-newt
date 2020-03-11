@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
+//  Based on https://github.com/apache/mynewt-newt/blob/master/newt/builder/size_report.go
 package main
 
 import (
@@ -30,8 +30,8 @@ import (
 
 func main() {
 	fmt.Printf("Size Report\n")
-	var elfFile = "/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pinetime/PineTime.elf"
-	var mapFile = "/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pinetime/PineTime.map"
+	var elfFile = os.Args[1] //  "/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pinetime/PineTime.elf"
+	var mapFile = os.Args[2] //  "/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pinetime/PineTime.map"
 	var err = Size(elfFile, mapFile)
 	/* Detailed size report:
 	var srcBase = "/Users/Luppy/PineTime/PineTime-apps/apps/pinetime"

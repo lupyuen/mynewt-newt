@@ -19,5 +19,7 @@ set -x  #  Echo commands
 cd size_report
 # go clean
 /usr/local/go/bin/go build
-./size_report
+./size_report \
+    /Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pinetime/PineTime.elf \
+    /Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pinetime/PineTime.map
 # go build -a -v -x

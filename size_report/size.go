@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
+//  Based on https://github.com/apache/mynewt-newt/blob/master/newt/builder/size.go
 package main
 
 import (

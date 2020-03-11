@@ -13,7 +13,10 @@
 # go get -u mynewt.apache.org/newt/newt/newtutil
 # go get -u mynewt.apache.org/newt/newt/settings
 
+set +x
+set +e
 cd size_report
 # go clean
-/usr/local/go/bin/go build size_report.go 
+/usr/local/go/bin/go build
+./size_report
 # go build -a -v -x

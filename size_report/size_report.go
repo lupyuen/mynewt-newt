@@ -29,13 +29,13 @@ import (
 )
 
 func main() {
-	fmt.Printf("hello, world\n")
+	fmt.Printf("Size Report\n")
 	var err = SizeReport(
 		"/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pinetime/PineTime.elf",
 		"/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pinetime/PineTime.map",
 		"/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pinetime",
-		"",
-		false)
+		"RAM",
+		true)
 	fmt.Fprintln(os.Stderr, "Error: ", err)
 }
 

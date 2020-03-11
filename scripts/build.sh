@@ -13,8 +13,9 @@
 # go get -u mynewt.apache.org/newt/newt/newtutil
 # go get -u mynewt.apache.org/newt/newt/settings
 
-set +x
-set +e
+set -e  #  Exit when any command fails
+set -x  #  Echo commands
+
 cd size_report
 # go clean
 /usr/local/go/bin/go build

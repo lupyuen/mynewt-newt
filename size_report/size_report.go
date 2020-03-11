@@ -29,16 +29,58 @@ import (
 )
 
 func main() {
-	fmt.Printf("Generating Size Report...\n")
+	fmt.Printf("Size Report\n")
+	var elfFile = "/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pinetime/PineTime.elf"
+	var mapFile = "/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pinetime/PineTime.map"
+	var err = Size(elfFile, mapFile)
+	/* Detailed size report:
+	var srcBase = "/Users/Luppy/PineTime/PineTime-apps/apps/pinetime"
 	var err = SizeReport(
-		"/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pinetime/PineTime.elf",
-		"/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pinetime/PineTime.map",
-		"/Users/Luppy/PineTime/PineTime-apps/apps/pinetime",
+		elfFile,
+		mapFile,
+		srcBase,
 		"RAM",
 		true)
+	*/
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "Error: ", err)
 	}
+}
+
+func Size(elfFilePath string, mapFile string) error {
+	pkgSizes, err := ParseMapFileSizes(mapFile)
+	if err != nil {
+		return err
+	}
+	err = PrintSizes(pkgSizes)
+	if err != nil {
+		return err
+	}
+
+	fmt.Printf("\nobjsize\n")
+	output, err := PrintSize(elfFilePath)
+	if err != nil {
+		return err
+	}
+	fmt.Printf("%s", output)
+
+	return nil
+}
+
+func PrintSize(elfFilePath string) ([]byte, error) {
+	var (
+		cmdOut []byte
+		err    error
+	)
+	cmdName := "arm-none-eabi-size"
+	cmdArgs := []string{elfFilePath}
+
+	if cmdOut, err = exec.Command(cmdName, cmdArgs...).Output(); err != nil {
+		fmt.Fprintln(os.Stderr, "There was an error running nm command: ", err)
+		os.Exit(1)
+	}
+
+	return cmdOut, err
 }
 
 func runNmCommand(elfFilePath string) ([]byte, error) {

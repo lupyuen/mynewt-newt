@@ -17,7 +17,7 @@
  * under the License.
  */
 
-package builder
+package main
 
 import (
 	"bufio"
@@ -27,11 +27,6 @@ import (
 	"sort"
 	"strconv"
 	"strings"
-
-	"mynewt.apache.org/newt/newt/interfaces"
-	"mynewt.apache.org/newt/util"
-	// "mynewt.apache.org/newt/newt/interfaces"
-	// "mynewt.apache.org/newt/util"
 )
 
 /*
@@ -198,11 +193,11 @@ func ParseMapFileSizes(fileName string) (map[string]*PkgSize, error) {
 			array := strings.Fields(scanner.Text())
 			offset, err := strconv.ParseUint(array[1], 0, 64)
 			if err != nil {
-				return nil, util.NewNewtError("Can't parse mem info")
+				return nil, err //  util.NewNewtError("Can't parse mem info")
 			}
 			size, err := strconv.ParseUint(array[2], 0, 64)
 			if err != nil {
-				return nil, util.NewNewtError("Can't parse mem info")
+				return nil, err //  util.NewNewtError("Can't parse mem info")
 			}
 			globalMemSections[array[0]] = MakeMemSection(array[0], offset,
 				size)
@@ -343,10 +338,12 @@ func ParseMapFileSizes(fileName string) (map[string]*PkgSize, error) {
 		}
 	}
 	file.Close()
-	for name, section := range globalMemSections {
-		util.StatusMessage(util.VERBOSITY_VERBOSE, "Mem %s: 0x%x-0x%x\n",
-			name, section.Offset, section.EndOff)
-	}
+	/*
+		for name, section := range globalMemSections {
+			util.StatusMessage(util.VERBOSITY_VERBOSE, "Mem %s: 0x%x-0x%x\n",
+				name, section.Offset, section.EndOff)
+		}
+	*/
 
 	return pkgSizes, nil
 }
@@ -391,6 +388,7 @@ func PrintSizes(libs map[string]*PkgSize) error {
 	return nil
 }
 
+/*
 func (t *TargetBuilder) Size() error {
 
 	err := t.PrepBuild()
@@ -490,3 +488,4 @@ func (b *Builder) SizeReport(sectionName string, diffFriendly bool) error {
 	}
 	return nil
 }
+*/
